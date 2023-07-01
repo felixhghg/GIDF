@@ -1,0 +1,100 @@
+local w = game:GetService("TweenService")
+
+local val = false
+
+
+local x = 32
+
+local info = TweenInfo.new(x)
+local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
+local screenGUI = Instance.new("ScreenGui")
+screenGUI.Parent = game.Players.LocalPlayer.PlayerGui
+local FR = Instance.new("Frame",screenGUI)
+FR.BackgroundTransparency = .5
+FR.Size = UDim2.fromOffset(200,50)
+FR.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+FR.Position = UDim2.fromScale(0,0.768)
+
+local BUTT = Instance.new("TextButton",FR)
+BUTT.BackgroundTransparency = 1
+BUTT.Size  =UDim2.fromOffset(180,30)
+BUTT.Text = "farm"
+BUTT.Position = UDim2.fromOffset(10,10)
+local u = Instance.new("UICorner",BUTT)
+
+local z = Instance.new("UICorner",FR)
+local u = Instance.new("UIStroke",BUTT)
+
+screenGUI.ResetOnSpawn = false
+
+
+
+local wb =  Instance.new("Frame",BUTT)
+wb.BackgroundTransparency = 1
+wb.Position = UDim2.fromOffset(120,6)
+wb.Size = UDim2.fromOffset(40,18)
+
+local wbC = Instance.new("UICorner",wb)
+local wbS = Instance.new("UIStroke",wb)
+wbS.Color = Color3.fromRGB(255,255,255)
+wbS.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+wbS.Thickness = 2
+
+local G = Instance.new("Frame",wb) 
+G.Position = UDim2.fromOffset(1,1)
+G.Size = UDim2.fromOffset(18,16)
+G.BackgroundTransparency = 1
+
+local wbC = Instance.new("UICorner",G)
+local wbS = Instance.new("UIStroke",G)
+wbS.Color = Color3.fromRGB(255, 0, 0)
+wbS.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+wbS.Thickness = 1
+
+
+
+u.Thickness = 2
+u.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+
+u.Color=  Color3.fromRGB(255, 255, 255)
+
+BUTT.TextColor3 =  Color3.fromRGB(255, 255, 255)
+
+
+
+BUTT.MouseButton1Up:Connect(function()
+	if val ==false then
+		val = true
+		w:Create(G,TweenInfo.new(1),{Position = UDim2.fromOffset(21,1)}):Play()
+		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(0,255,0)}):Play()
+		
+	else
+		val = false
+		w:Create(G,TweenInfo.new(1),{Position = UDim2.fromOffset(1,1)}):Play()
+		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(255, 0, 0)}):Play()
+	end
+	
+	
+	
+end)
+
+wait(5)
+
+while wait(1) do
+	if val == true then
+		w:Create(BUTT,TweenInfo.new(0.2),{Position = UDim2.fromOffset(10,0)}):Play()
+		wait(0.2)
+		w:Create(BUTT,TweenInfo.new(0.1,Enum.EasingStyle.Bounce),{Position = UDim2.fromOffset(10,10)}):Play()
+		local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
+		uoy.CFrame = CFrame.new(-54.7150612,30,1000)
+		workspace.Gravity = 1
+		local sus = w:Create(uoy,info,{CFrame = CFrame.new(-54.7150612,30,9487)})
+		sus:Play()
+		wait(x)
+
+		uoy.CFrame = CFrame.new(-54.7150612, -359.640991, 9487)
+		wait(1)
+		uoy.Parent.Humanoid.Health = 0
+		wait(15)
+	end
+end
