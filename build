@@ -1,6 +1,8 @@
+
 local w = game:GetService("TweenService")
 
 local val = false
+
 
 
 local x = 32
@@ -14,6 +16,21 @@ FR.BackgroundTransparency = .5
 FR.Size = UDim2.fromOffset(200,50)
 FR.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 FR.Position = UDim2.fromScale(0,0.768)
+
+
+local crossID = "http://www.roblox.com/asset/?id=264596039"
+
+local cross = Instance.new("ImageButton",FR)
+cross.BackgroundTransparency =1 
+cross.Position = UDim2.fromOffset(0,-20)
+cross.Size = UDim2.fromOffset(20,20)
+cross.ImageColor3 = Color3.fromRGB(0,0,0)
+cross.Image = crossID
+
+local crossA = false
+
+
+
 
 local BUTT = Instance.new("TextButton",FR)
 BUTT.BackgroundTransparency = 1
@@ -49,7 +66,7 @@ local wbC = Instance.new("UICorner",G)
 local wbS = Instance.new("UIStroke",G)
 wbS.Color = Color3.fromRGB(255, 0, 0)
 wbS.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-wbS.Thickness = 1
+wbS.Thickness = 2
 
 
 
@@ -78,23 +95,31 @@ BUTT.MouseButton1Up:Connect(function()
 	
 end)
 
-wait(5)
+cross.MouseButton1Up:Connect(function()
+	crossA =true
+end)
+
+
 
 while wait(1) do
-	if val == true then
-		w:Create(BUTT,TweenInfo.new(0.2),{Position = UDim2.fromOffset(10,0)}):Play()
-		wait(0.2)
-		w:Create(BUTT,TweenInfo.new(0.1,Enum.EasingStyle.Bounce),{Position = UDim2.fromOffset(10,10)}):Play()
-		local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
-		uoy.CFrame = CFrame.new(-54.7150612,30,1000)
-		workspace.Gravity = 1
-		local sus = w:Create(uoy,info,{CFrame = CFrame.new(-54.7150612,30,9487)})
-		sus:Play()
-		wait(x)
+	if crossA  then
+		screenGUI:Destroy()
+		break
+	elseif val == true then
+	w:Create(BUTT,TweenInfo.new(0.2),{Position = UDim2.fromOffset(10,0)}):Play()
+	wait(0.2)
+	w:Create(BUTT,TweenInfo.new(0.1,Enum.EasingStyle.Bounce),{Position = UDim2.fromOffset(10,10)}):Play()
+	local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
+	uoy.CFrame = CFrame.new(-54.7150612,30,1000)
+	workspace.Gravity = 1
+	local sus = w:Create(uoy,info,{CFrame = CFrame.new(-54.7150612,30,9487)})
+	sus:Play()
+	wait(x)
 
-		uoy.CFrame = CFrame.new(-54.7150612, -359.640991, 9487)
-		wait(1)
-		uoy.Parent.Humanoid.Health = 0
-		wait(15)
+	uoy.CFrame = CFrame.new(-54.7150612, -359.640991, 9487)
+	wait(1)
+	uoy.Parent.Humanoid.Health = 0
+	wait(15)
+	
 	end
 end
