@@ -1,0 +1,50 @@
+local w = game:GetService("TweenService")
+local info = TweenInfo.new(0.5)
+local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
+local screenGUI = Instance.new("ScreenGui")
+screenGUI.Parent = game.Players.LocalPlayer.PlayerGui
+local FR = Instance.new("Frame",screenGUI)
+FR.BackgroundTransparency = .5
+FR.Size = UDim2.fromOffset(200,100)
+FR.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+FR.Position = UDim2.fromScale(0,0.768)
+local TextBox = Instance.new("TextBox",FR)
+TextBox.BackgroundTransparency = 1
+
+TextBox.Text = "предмет или ник игрока"
+TextBox.Size  =UDim2.fromOffset(180,30)
+TextBox.Position = UDim2.fromOffset(10,10)
+local BUTT = Instance.new("TextButton",FR)
+BUTT.BackgroundTransparency = 1
+BUTT.Size  =UDim2.fromOffset(180,30)
+BUTT.Text = "тпхнутся"
+BUTT.Position = UDim2.fromOffset(10,60)
+local u = Instance.new("UICorner",BUTT)
+local q = Instance.new("UICorner",TextBox)
+local z = Instance.new("UICorner",FR)
+local u = Instance.new("UIStroke",BUTT)
+local q = Instance.new("UIStroke",TextBox)
+q.Thickness = 2
+u.Thickness = 2
+u.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+q.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+u.Color=  Color3.fromRGB(255, 255, 255)
+q.Color = Color3.fromRGB(255, 255, 255)
+BUTT.TextColor3 =  Color3.fromRGB(255, 255, 255)
+TextBox.TextColor3 =  Color3.fromRGB(255, 255, 255)
+BUTT.MouseButton1Up:Connect(function()
+	local child = workspace:FindFirstChild(TextBox.Text)
+	if child.ClassName =="Model" then
+		for _,f in pairs(child:GetDescendants()) do
+			if f.ClassName =="Part" or f.ClassName == "MeshPart" or f.Name == "HumanoidRootPart" then
+
+				local n = w:Create(uoy,info,{CFrame = f.CFrame}):Play()
+			end
+		end
+	else
+		local n = w:Create(uoy,info,{CFrame = child.CFrame}):Play()
+		
+	end
+	
+	
+end)
