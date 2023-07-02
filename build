@@ -83,12 +83,12 @@ BUTT.MouseButton1Up:Connect(function()
 	if val ==false then
 		val = true
 		w:Create(G,TweenInfo.new(1),{Position = UDim2.fromOffset(21,1)}):Play()
-		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(0,255,0)}):Play()
+		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(0,255,4)}):Play()
 		
 	else
 		val = false
 		w:Create(G,TweenInfo.new(1),{Position = UDim2.fromOffset(1,1)}):Play()
-		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(255, 0, 0)}):Play()
+		w:Create(wbS,TweenInfo.new(1),{Color = Color3.fromRGB(255, 0, 4)}):Play()
 	end
 	
 	
@@ -106,9 +106,7 @@ while wait(1) do
 		screenGUI:Destroy()
 		break
 	elseif val == true then
-	w:Create(BUTT,TweenInfo.new(0.2),{Position = UDim2.fromOffset(10,0)}):Play()
-	wait(0.2)
-	w:Create(BUTT,TweenInfo.new(0.1,Enum.EasingStyle.Bounce),{Position = UDim2.fromOffset(10,10)}):Play()
+	
 	local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
 	uoy.CFrame = CFrame.new(-54.7150612,30,1000)
 	workspace.Gravity = 1
