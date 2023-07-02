@@ -49,6 +49,21 @@ u.Color=  Color3.fromRGB(255, 255, 255)
 q.Color = Color3.fromRGB(255, 255, 255)
 BUTT.TextColor3 =  Color3.fromRGB(255, 255, 255)
 TextBox.TextColor3 =  Color3.fromRGB(255, 255, 255)
+
+local crossID = "http://www.roblox.com/asset/?id=264596039"
+
+local cross = Instance.new("ImageButton",FR)
+cross.BackgroundTransparency =1 
+cross.Position = UDim2.fromOffset(0,-20)
+cross.Size = UDim2.fromOffset(20,20)
+cross.ImageColor3 = Color3.fromRGB(0,0,0)
+cross.Image = crossID
+
+cross.MouseButton1Up:Connect(function()
+	ScreenGUI:Destroy()
+end)
+
+
 BUTT.MouseButton1Up:Connect(function()
 	local b = workspace.__THINGS.Coins
 	for _,v in pairs(b:GetChildren()) do
