@@ -5,7 +5,7 @@ local val = false
 
 
 
-local x = 32
+local x = 36
 
 local info = TweenInfo.new(x)
 local uoy = game.Players.LocalPlayer.Character.HumanoidRootPart
